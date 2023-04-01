@@ -4,7 +4,7 @@ import socket
 nome = input("Insira seu nome de usuário: ")
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('192.168.100.5',55555))
+client.connect(('189.127.47.106',55555))
 
 def recebe_do_serv():
     while True:

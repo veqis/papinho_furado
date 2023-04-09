@@ -5,10 +5,6 @@ import tkinter.scrolledtext
 import tkinter.messagebox
 from tkinter import simpledialog
 
-
-IPHOST = 'localhost'
-PORTA = 9090
-
 class Client:
     def __init__(self, IPHOST, PORTA):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -67,7 +63,6 @@ class Client:
         self.area_enviar.delete('1.0', tkinter.END)
         self.area_enviar.mark_set("insert", "1.0")
 
-
     def stop(self):
         self.executando = False
         self.win.destroy()
@@ -125,18 +120,18 @@ class ConnectDialog(tkinter.Toplevel):
         self.ip_input.grid(row=0, column=1, padx=10, pady=10)
 
         tkinter.Label(self, text="Porta do servidor:").grid(row=1, column=0, padx=10, pady=10)
-        self.port_input = tkinter.Entry(self)
-        self.port_input.grid(row=1, column=1, padx=10, pady=10)
+        self.porta_input = tkinter.Entry(self)
+        self.porta_input.grid(row=1, column=1, padx=10, pady=10)
 
-        self.connect_button = tkinter.Button(self, text="Conectar", command=self.connect)
-        self.connect_button.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
+        self.botao_conect = tkinter.Button(self, text="Conectar", command=self.connect)
+        self.botao_conect.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
 
         self.ip = None
         self.port = None
 
     def connect(self):
         self.ip = self.ip_input.get()
-        self.port = self.port_input.get()
+        self.port = self.porta_input.get()
 
         if not self.ip or not self.port:
             tkinter.messagebox.showerror("Erro", "IP e porta são obrigatórios")
